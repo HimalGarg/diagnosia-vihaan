@@ -1,0 +1,48 @@
+# Licence and dependency audit
+
+Curai is Apache-2.0. Not legal advice: have counsel confirm before distribution.
+
+## Third-party code in this repository
+
+| Source | Licence | Where | Obligation | Status |
+|---|---|---|---|---|
+| OpenScribe | MIT | `backend/clinscribe/verifier.py`, `drafting.py` | Keep the notice | Done in `THIRD_PARTY_NOTICES.md` |
+| FHIR-XTract | MIT | `backend/lablens/parser.py` | Keep the notice | Done |
+| Referral Toolkit | CC BY 4.0 | `backend/referralloop/routes.py`, its tests | Attribute and state changes | Done |
+
+No code from any GPL, AGPL, MPL or unlicensed source is in this repository.
+
+## New dependencies
+
+| Package | Licence | Scope |
+|---|---|---|
+| RapidFuzz | MIT | Runtime |
+| PyMongo | Apache-2.0 | Optional, for MongoDB |
+| psycopg, psycopg-pool | LGPL-3.0 | Optional, for YugabyteDB. Used unmodified as libraries |
+| pdfplumber, pdfminer.six | MIT | Runtime |
+| cryptography | Apache-2.0 or BSD-3-Clause | Runtime |
+| pypdfium2 | BSD-3-Clause, Apache-2.0, bundled PDFium licences | Runtime |
+| reportlab | BSD | Tests only |
+
+## Data and services
+
+| Item | Terms to respect |
+|---|---|
+| LOINC codes in `backend/lablens/analytes.json` | The licence requires its notice. **Not yet added.** See `CLINICAL_GOVERNANCE.md` |
+| Groq | Patient data leaves our servers and India. Check its terms and sign an agreement before real use |
+| Google Gemini | The same content as Groq, apart from audio, when a Gemini key is set. Needs its own agreement |
+| Microsoft Edge voices (`edge-tts`) | An unofficial client for a consumer service, with no agreement. Question text only, demo mode only (`edge_tts_terms` signoff) |
+| Meko | Finished records as text when patient packs are on. No agreement (`meko_agreement` signoff) |
+
+## Our own content, not third-party
+
+`backend/lablens/analytes.json` was written for this project as unreviewed starter
+data. Their accuracy needs professional review, covered in `CLINICAL_GOVERNANCE.md`.
+
+## Data that isn't in git
+
+It isn't in git, and it limits how the product can be used.
+
+| Item | Licence | Effect |
+|---|---|---|
+| Indian Medicine Dataset | Repository is MIT, but the data looks scraped, so upstream permission is unconfirmed | Fine for a demo. Replace before selling |
