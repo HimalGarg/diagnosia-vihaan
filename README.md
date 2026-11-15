@@ -5,24 +5,17 @@
 
 **An AI-assisted, human-governed clinical operating system uniting patient intake, ambient documentation, diagnostic intelligence, prescription guidance, and care transitions onto ONE shared longitudinal patient record.**
 
-*Formerly Diagnosia · Built for High-Volume, Time-Constrained Clinical Environments*
+*Built for High-Volume, Time-Constrained Clinical Environments*
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](LICENSE)
 [![Python 3.11+](https://img.shields.io/badge/Python-3.11%20%7C%203.12-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.110+-009688?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
 [![Clinical Add-ons](https://img.shields.io/badge/Clinical%20Modules-6%20Integrated%20Tools-2563EB?style=for-the-badge)](#-the-six-clinical-tools)
-[![Operating Mode](https://img.shields.io/badge/Operating%20Mode-Synthetic%20Pilot%20Only-D97706?style=for-the-badge)](#-safety-boundaries--clinical-governance)
 [![FHIR R4 Ready](https://img.shields.io/badge/Interoperability-FHIR%20R4%20Ready-E11D48?style=for-the-badge)](docs/FHIR_MAPPING.md)
 
-[Overview](#-overview) • [The Clinical Crisis](#-the-clinical-crisis-in-high-volume-care) • [The Six Tools](#-the-six-clinical-tools) • [Architecture](#-system-architecture) • [Integrations](#-enterprise-integrations) • [CareFlow](#-careflow-the-live-patient-journey) • [Safety & Governance](#-safety-boundaries--clinical-governance) • [Market Analysis](docs/MARKET_ANALYSIS.md) • [Getting Started](#-getting-started) • [Tech Stack](#-technology-stack)
+[Overview](#-overview) • [The Clinical Crisis](#-the-clinical-crisis-in-high-volume-care) • [The Six Tools](#-the-six-clinical-tools) • [Architecture](#-system-architecture) • [Integrations](#-enterprise-integrations) • [CareFlow](#-careflow-the-live-patient-journey) • [Market Analysis](docs/MARKET_ANALYSIS.md) • [Getting Started](#-getting-started) • [Tech Stack](#-technology-stack)
 
 </div>
-
----
-
-> [!CAUTION]
-> **DEVELOPMENT PROTOTYPE & SYNTHETIC DATA PILOT ONLY — NOT FOR REAL-PATIENT CARE.**
-> Curai is currently in a synthetic pilot stage. It must be operated using synthetic/de-identified demo profiles only. Curai does not provide automated diagnoses, does not prescribe, does not alter medication dosages, and does not replace the clinical judgment of qualified healthcare professionals. All AI outputs are strictly non-authoritative reviewable drafts.
 
 ---
 
@@ -265,34 +258,6 @@ Curai adheres to strict separation of concerns: **no external integration ever b
 | **MongoDB Atlas** | MongoDB Cloud & Change Streams | Stores projection timelines for CareFlow; powers instant, reactive UI updates across open clinic screens | Local outbox caches events; UI falls back to 15s polling |
 | **YugabyteDB** | Distributed PostgreSQL (YSQL) | Curai-owned technical execution ledger storing token spend, prompt attempts, latencies, and agent handoffs | Local run storage preserves logs; background retry |
 | **Meko MCP** | Model Context Protocol Server | Connects approved medical knowledge bases, clinical guidelines, and inter-agent memory handoffs | System gracefully falls back to local knowledge schemas |
-
----
-
-## 🔒 Safety Boundaries & Clinical Governance
-
-Curai was engineered with safety-first clinical principles embedded directly into code:
-
-```mermaid
-stateDiagram-v2
-    [*] --> DraftGenerated: AI Inference Output
-    DraftGenerated --> PendingReview: Stored with Source Citation
-    PendingReview --> Corrected: Clinician Edits Fields
-    Corrected --> PendingReview: Diff Recorded in Audit Log
-    PendingReview --> Approved: Clinician Digital Sign-off
-    PendingReview --> Rejected: Clinician Discards Draft
-    Approved --> CommittedRecord: Promoted to Patient Record & FHIR
-    Rejected --> AuditArchive: Retained for Governance / Safety
-```
-
-1. **Human-in-the-Loop Review State Machine**: AI can only generate non-authoritative drafts (`DraftGenerated`). Information is strictly quarantined from official records and external FHIR exports until an authorized human signs off (`Approved`).
-2. **Zero Automated Clinical Decisions**: Curai does not compute probability scores, does not suggest diagnoses, does not modify drug dosages, and never recommends commercial brand substitutes.
-3. **AES-256-GCM Envelope Encryption**: Uploaded prescription images, laboratory PDFs, and voice recordings are encrypted at rest using private key files outside the code repository (`CURAI_DOCUMENT_KEY_FILE`).
-4. **Hardened Web Security**:
-   * Password hashing using **Argon2id**.
-   * Cryptographically hashed session tokens delivered via secure `HttpOnly`, `SameSite=Lax` cookies.
-   * Strict Content Security Policy (CSP) with dynamic script hashes; zero unsafe inline eval.
-   * Sliding session expirations with background activity detection (`X-Curai-Background`).
-   * Token-bucket rate limiters guarding all public and AI-invoking endpoints.
 
 ---
 
