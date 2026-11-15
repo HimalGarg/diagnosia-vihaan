@@ -14,7 +14,7 @@
 [![Operating Mode](https://img.shields.io/badge/Operating%20Mode-Synthetic%20Pilot%20Only-D97706?style=for-the-badge)](#-safety-boundaries--clinical-governance)
 [![FHIR R4 Ready](https://img.shields.io/badge/Interoperability-FHIR%20R4%20Ready-E11D48?style=for-the-badge)](docs/FHIR_MAPPING.md)
 
-[Overview](#-overview) • [The Clinical Crisis](#-the-clinical-crisis-in-high-volume-care) • [The Six Tools](#-the-six-clinical-tools) • [Architecture](#-system-architecture) • [Integrations](#-enterprise-integrations) • [CareFlow](#-careflow-the-live-patient-journey) • [Safety & Governance](#-safety-boundaries--clinical-governance) • [Getting Started](#-getting-started) • [Tech Stack](#-technology-stack)
+[Overview](#-overview) • [The Clinical Crisis](#-the-clinical-crisis-in-high-volume-care) • [The Six Tools](#-the-six-clinical-tools) • [Architecture](#-system-architecture) • [Integrations](#-enterprise-integrations) • [CareFlow](#-careflow-the-live-patient-journey) • [Safety & Governance](#-safety-boundaries--clinical-governance) • [Market Analysis](docs/MARKET_ANALYSIS.md) • [Getting Started](#-getting-started) • [Tech Stack](#-technology-stack)
 
 </div>
 
@@ -69,12 +69,12 @@ Curai organizes its capabilities directly around the natural cadence of a patien
 
 | Phase | Tool | Target User | Core Capability | Safety Mechanism |
 |---|---|---|---|---|
-| **Before Visit** | **DiagnoFast** | Patients, Triage Nurses, Reception | Voice-driven multilingual waiting-room intake with automated 1-page clinician requisition | Two-layer deterministic red-flag emergency screening (regex rules + AI fallback) |
-| **During Visit** | **ClinScribe** | Clinicians, Scribes | Ambient consultation transcription into structured SOAP / H&P clinical notes | Strict quotation verifier against transcript; doctor review & digital sign-off gate |
-| **During Visit** | **LabLens** | Pathologists, Doctors, Patients | Dual-engine lab report parser (local PDF + vision OCR) with longitudinal analyte trending | Uncertainty scoring; conflicting range detection; manual compare gate before committing |
-| **After Visit** | **Prescription Analyzer** | Patients, Caregivers, Pharmacists | Vision OCR, shorthand decoder, and 250k drug registry validation in Hindi/English | Mandatory patient confirmation tick-gate; unconfirmed medicines routed to pharmacist |
-| **After Visit** | **ReferralLoop** | General Physicians, Specialists | End-to-end closed-loop specialist referral, routing, and back-consultation tracker | Eliminates silent drops; SLA tracking; bi-directional clinical note handoff |
-| **After Visit** | **DischargeCare** | Inpatient Teams, Family Caregivers | Discharge transition organizer, caregiver task checklist, and follow-up protocol | Transition gate requires all pending tasks/results cleared or documented exception |
+| **Before Visit** | [**DiagnoFast**](docs/tools/diagnofast.md) | Patients, Triage Nurses, Reception | Voice-driven multilingual waiting-room intake with automated 1-page clinician requisition | Two-layer deterministic red-flag emergency screening (regex rules + AI fallback) |
+| **During Visit** | [**ClinScribe**](docs/tools/clinscribe.md) | Clinicians, Scribes | Ambient consultation transcription into structured SOAP / H&P clinical notes | Strict quotation verifier against transcript; doctor review & digital sign-off gate |
+| **During Visit** | [**LabLens**](docs/tools/lablens.md) | Pathologists, Doctors, Patients | Dual-engine lab report parser (local PDF + vision OCR) with longitudinal analyte trending | Uncertainty scoring; conflicting range detection; manual compare gate before committing |
+| **After Visit** | [**Prescription Analyzer**](docs/tools/prescription_analyzer.md) | Patients, Caregivers, Pharmacists | Vision OCR, shorthand decoder, and 250k drug registry validation in Hindi/English | Mandatory patient confirmation tick-gate; unconfirmed medicines routed to pharmacist |
+| **After Visit** | [**ReferralLoop**](docs/tools/referralloop.md) | General Physicians, Specialists | End-to-end closed-loop specialist referral, routing, and back-consultation tracker | Eliminates silent drops; SLA tracking; bi-directional clinical note handoff |
+| **After Visit** | [**DischargeCare**](docs/tools/dischargecare.md) | Inpatient Teams, Family Caregivers | Discharge transition organizer, caregiver task checklist, and follow-up protocol | Transition gate requires all pending tasks/results cleared or documented exception |
 
 ---
 
