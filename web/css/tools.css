@@ -1,0 +1,341 @@
+/* Shared styles for the working tool pages. */
+[hidden] {
+  display: none !important;
+}
+
+body.body {
+  background-color: #0a0a0a;
+}
+
+.tool-page {
+  color: #fff;
+}
+
+/* Patients on the waiting-room tablet should stay in the interview. */
+.intake-page .fixed-cta-container,
+.intake-page .nav-menu {
+  display: none;
+}
+
+.tool-narrow {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.tool-panel {
+  margin-bottom: 20px;
+  padding: 24px;
+  border: 1.5px solid #fff;
+  border-radius: 8px;
+  background-color: #0a0a0a;
+}
+
+.tool-panel h4 {
+  margin: 0 0 12px;
+  color: #fff;
+}
+
+.tool-panel p {
+  color: #ccc;
+  font-size: 15px;
+}
+
+.tool-panel ul,
+.tool-panel ol {
+  margin: 0;
+  padding-left: 20px;
+  color: #ccc;
+  font-size: 15px;
+}
+
+.tool-panel li {
+  margin-bottom: 6px;
+}
+
+.tool-panel a {
+  color: #d9b8ff;
+}
+
+.tool-label {
+  display: block;
+  margin: 12px 0 6px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.tool-panel input[type="text"],
+.tool-panel input[type="number"],
+.tool-panel input[type="file"],
+.tool-panel select,
+.tool-panel textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 12px;
+  border: 1px solid #757575;
+  border-radius: 6px;
+  background-color: #141414;
+  color: #fff;
+  font-size: 15px;
+}
+
+.tool-panel option {
+  color: #000;
+}
+
+.tool-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  margin-top: 18px;
+}
+
+.tool-actions .use-now {
+  margin: 0;
+  min-width: 160px;
+}
+
+.tool-panel .use-now:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
+
+.tool-secondary {
+  height: 40px;
+  padding: 0 16px;
+  border: 1px solid #fff;
+  border-radius: 8px;
+  background: transparent;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.tool-panel .tool-error {
+  margin: 12px 0 0;
+  color: #ff9d9d;
+}
+
+.tool-attribution {
+  color: #999;
+  font-size: 13px;
+  text-align: center;
+}
+
+.tool-panel .urgent-banner {
+  color: #000;
+  font-size: 24px;
+}
+
+.medicine-card {
+  margin-bottom: 12px;
+  padding: 14px;
+  border: 1px solid #555;
+  border-radius: 8px;
+}
+
+.medicine-card.unsure {
+  border-color: #e0b64a;
+}
+
+.medicine-card.unreadable {
+  border-color: #ff9d9d;
+}
+
+.medicine-card strong {
+  color: #fff;
+}
+
+.medicine-card p {
+  margin: 4px 0;
+}
+
+.schedule {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.schedule div {
+  padding: 10px;
+  border: 1px solid #555;
+  border-radius: 6px;
+}
+
+.demo-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background-color: #ffe08a;
+  color: #000;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.urgent-banner {
+  margin-bottom: 14px;
+  padding: 14px 16px;
+  border-radius: 8px;
+  background-color: #ff9d9d;
+  color: #000;
+  font-weight: 700;
+}
+
+.queue-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  margin-bottom: 8px;
+  padding: 10px 12px;
+  border: 1px solid #555;
+  border-radius: 6px;
+  background: transparent;
+  color: #fff;
+  font-size: 15px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.queue-item.urgent {
+  border-color: #ff9d9d;
+}
+
+.link-box {
+  word-break: break-all;
+}
+
+.tool-panel .intake-question {
+  margin: 8px 0 16px;
+  color: #fff;
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.record-button {
+  width: 100%;
+  height: 84px;
+  border: none;
+  border-radius: 12px;
+  background-image: linear-gradient(132deg, #D95D7D, #BB5AA0 41%, #A074CB 75%);
+  color: #fff;
+  font-size: 22px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.record-button.recording {
+  background-image: none;
+  background-color: #c0392b;
+}
+
+.record-button:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
+
+@media (max-width: 480px) {
+  .heatmap-pair,
+  .schedule {
+    grid-template-columns: 1fr;
+  }
+
+  .tool-panel {
+    padding: 16px;
+  }
+
+  .tool-panel .intake-question {
+    font-size: 24px;
+  }
+}
+
+@media print {
+  .fixed-cta-container,
+  .navbar,
+  .section.footer,
+  .no-print {
+    display: none !important;
+  }
+
+  body,
+  .section.black,
+  .tool-panel {
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  .tool-panel {
+    border: none;
+    padding: 0;
+  }
+
+  .tool-panel h4,
+  .tool-panel p,
+  .tool-panel ul,
+  .tool-panel strong {
+    color: #000 !important;
+  }
+
+  .section.black {
+    padding: 0 !important;
+  }
+}
+
+/* DiagnoFast: calm, touch-friendly waiting-room interview. */
+.intake-page { --paper: #0a0a0a; --sheet: #161616; --raised: #1f1f1f; --ink: #fff; --ink-soft: #bab8b4; --rule: #303030; --edge: #4a4a4a; --action: #eaa3cd; --alert: #ff9d94; --alert-tint: #3a1a18; --brand: linear-gradient(132deg, #b8405f, #94408a 45%, #6f52b8 85%); margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.55 system-ui, sans-serif; }
+.intake-page * { box-sizing: border-box; }
+.intake-page h1 { font-size: clamp(1.6rem, 3vw, 2.3rem); line-height: 1.2; margin: 0 0 16px; }
+.intake-page button, .intake-page input, .intake-page select, .intake-page textarea { font: inherit; }
+.intake-page button, .intake-page .use-now { cursor: pointer; min-height: 48px; }
+.intake-page :focus-visible { outline: 3px solid var(--action); outline-offset: 4px; }
+.intake-page button:disabled { cursor: wait; opacity: .5; }
+.intake-header { max-width: 1220px; margin: auto; padding: 28px 24px; display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+.intake-header span { text-align: right; font-weight: 650; }
+.intake-header small { display: block; color: var(--ink-soft); font-size: 12px; font-weight: 400; }
+.intake-shell { max-width: 1220px; padding: 0 24px 40px; margin: auto; }
+.intake-page .tool-panel { border: 1px solid var(--rule); border-radius: 20px; background: var(--sheet); padding: 32px; }
+.intake-page .tool-panel p { color: var(--ink-soft); }
+.intake-page .tool-panel .intake-eyebrow { color: var(--action); letter-spacing: .12em; font-size: 12px; font-weight: 650; margin: 0 0 24px; }
+.specialty-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 28px; }
+.specialty-card { display: flex; flex-direction: column; align-items: flex-start; text-align: left; padding: 22px; gap: 8px; background: var(--raised); border: 1px solid var(--rule); border-radius: 14px; color: var(--ink); }
+.specialty-card:hover { background: #2a2028; border-color: var(--action); }
+.specialty-card .specialty-symbol { color: var(--action); font-size: 26px; }
+.specialty-card small { color: var(--ink-soft); }
+.language-choice { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 8px 0 22px; }
+.language-choice button, .abha-choice button { min-height: 56px; padding: 12px 18px; border: 1px solid var(--edge); border-radius: 12px; background: var(--raised); color: var(--ink); font-size: 20px; font-weight: 600; }
+.language-choice button[aria-pressed="true"], .abha-choice button[aria-pressed="true"] { background: var(--brand); color: #fff; border-color: transparent; }
+.consent-box { border: 1px solid var(--rule); border-radius: 14px; padding: 18px 20px; margin-bottom: 8px; background: var(--raised); }
+.consent-box h2 { margin: 0 0 10px; font-size: 1.2rem; }
+.consent-box ul { margin: 0 0 14px; padding-left: 22px; font-size: 18px; line-height: 1.6; }
+.abha-choice { border: 0; padding: 0; margin: 0 0 14px; display: flex; flex-wrap: wrap; gap: 12px; }
+.abha-choice legend { font-size: 17px; margin-bottom: 10px; }
+.abha-choice button { min-width: 120px; font-size: 18px; }
+.help-box { margin: 16px 0 0; display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+.help-box button { min-height: 48px; font-size: 17px; }
+.demographics { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 18px; }
+.intake-columns { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px; }
+.intake-columns .tool-panel { min-width: 0; margin-bottom: 0; }
+.assistant-orb { display: grid; place-items: center; width: 84px; height: 84px; border-radius: 50%; margin: 32px 0; background: radial-gradient(circle at 30% 25%, #eaa3cd, #94408a 50%, #6f52b8); box-shadow: 0 0 30px #94408a40; }
+.assistant-orb span { font-size: 40px; color: #fff; }
+.assistant-orb.speaking { animation: intake-breathe 1.8s ease-in-out infinite; }
+@keyframes intake-breathe { 50% { box-shadow: 0 0 0 12px #eaa3cd1a, 0 0 40px #94408a66; } }
+.intake-page .tool-panel .intake-question { color: var(--ink); font-size: clamp(1.4rem, 2.4vw, 1.85rem); line-height: 1.4; font-weight: 550; }
+.answer-chips { display: flex; flex-wrap: wrap; gap: 10px; margin: 16px 0 28px; }
+.answer-chips button { padding: 10px 17px; border: 1px solid var(--edge); border-radius: 30px; background: var(--raised); color: var(--ink); }
+.answer-chips button[aria-pressed="true"] { background: var(--brand); color: #fff; border-color: transparent; }
+.intake-page .intake-hint { font-size: 13px; color: var(--ink-soft); }
+.intake-page .tool-secondary { background: transparent; border: 1px solid var(--edge); border-radius: 8px; color: var(--ink); padding: 10px 18px; }
+.intake-page .use-now { display: inline-flex; align-items: center; justify-content: center; background: var(--brand); color: #fff; border: 0; border-radius: 8px; padding: 12px 22px; text-decoration: none; font-weight: 650; }
+.intake-page .record-button { display: block; width: 100%; background: var(--brand); color: #fff; border: 0; border-radius: 10px; font-size: 17px; padding: 15px; margin: 10px 0 24px; }
+.intake-page .record-button.recording { background: #a4211a; color: #fff; }
+.intake-page .tool-panel textarea { resize: vertical; min-height: 180px; background: var(--paper); font-size: 18px; line-height: 1.6; }
+.transcript-meta { display: flex; justify-content: space-between; gap: 10px; color: var(--action); font-size: 13px; }
+#intake-meter { display: block; width: 100%; height: 40px; margin-top: 16px; border-radius: 6px; background: var(--paper); }
+.intake-help { text-align: center; font-size: 13px; color: var(--ink-soft); margin: 26px 0; }
+.intake-page .tool-panel .tool-error, .intake-page .tool-panel .urgent-banner { color: var(--alert); background: var(--alert-tint); padding: 14px; border-radius: 8px; }
+@media (max-width: 800px) { .specialty-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .intake-columns { gap: 14px; } .intake-page .tool-panel { padding: 22px; } }
+@media (max-width: 620px) { .intake-columns, .demographics { grid-template-columns: 1fr; } .intake-shell { padding: 0 14px 24px; } .intake-header { padding: 20px 14px; } .specialty-card { padding: 16px; } .assistant-orb { margin: 12px 0 20px; width: 60px; height: 60px; } }
+@media (prefers-reduced-motion: reduce) { .assistant-orb.speaking { animation: none; } }

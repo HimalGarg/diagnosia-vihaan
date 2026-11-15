@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <title>DiagnoFast · Your visit starts here</title>
+  <link rel="icon" href="images/favicon.png">
+  <link rel="stylesheet" href="css/tools.css">
+</head>
+<body class="intake-page">
+  <header class="intake-header"><a href="index.html"><img src="images/logo_inv.svg" alt="Curai" width="114" height="34"></a><span>DiagnoFast <small>Waiting-room assistant</small></span></header>
+  <main class="intake-shell">
+    <section id="intake-inactive" class="tool-panel" hidden>
+      <h1>Please ask reception / रिसेप्शन पर पूछें</h1>
+      <p id="intake-inactive-message">This link is no longer active. Please ask reception for a new link.</p>
+    </section>
+    <section id="intake-specialties" class="tool-panel" hidden aria-labelledby="specialty-title">
+      <p class="intake-eyebrow">01 / WELCOME · स्वागत है</p>
+      <h1 id="specialty-title">Which department are you visiting?</h1>
+      <p>अपना विभाग चुनें। If you’re unsure, ask reception to help you choose.</p>
+      <div id="intake-specialty-grid" class="specialty-grid"></div>
+    </section>
+    <section id="intake-welcome" class="tool-panel" hidden>
+      <p class="intake-eyebrow">02 / BEFORE WE BEGIN · शुरू करने से पहले</p>
+      <h1>Namaste<span id="intake-name"></span></h1>
+      <p id="intake-department"></p>
+      <button id="intake-change-specialty" class="tool-secondary" type="button" hidden>Change department / विभाग बदलें</button>
+      <div id="intake-demographics" class="demographics" hidden>
+        <div><label class="tool-label" for="intake-patient-name">Name / नाम</label><input id="intake-patient-name" type="text" maxlength="120" autocomplete="off" required></div>
+        <div><label class="tool-label" for="intake-age">Age in years / उम्र (optional)</label><input id="intake-age" type="number" min="0" max="130" step="1"></div>
+        <div><label class="tool-label" for="intake-sex">Sex / लिंग (optional)</label><select id="intake-sex"><option value="">Not stated / नहीं बताया</option><option value="female">Female / महिला</option><option value="male">Male / पुरुष</option><option value="other">Other / अन्य</option></select></div>
+      </div>
+      <p class="tool-label" id="intake-language-title">भाषा चुनें / Choose your language</p>
+      <input id="intake-language" type="hidden" value="">
+      <div class="language-choice" role="group" aria-labelledby="intake-language-title">
+        <button id="intake-language-hi" type="button" lang="hi" aria-pressed="false" data-language="hi-IN">हिन्दी</button>
+        <button id="intake-language-en" type="button" lang="en" aria-pressed="false" data-language="en-IN">English</button>
+      </div>
+      <div id="intake-consent" class="consent-box" hidden>
+        <h2 id="intake-consent-title"></h2>
+        <ul id="intake-consent-lines"></ul>
+        <fieldset id="intake-abha" class="abha-choice" hidden>
+          <legend id="intake-abha-question"></legend>
+          <button id="intake-abha-yes" type="button" aria-pressed="false"></button>
+          <button id="intake-abha-no" type="button" aria-pressed="false"></button>
+        </fieldset>
+        <p id="intake-consent-decline" class="intake-hint"></p>
+        <div class="tool-actions"><button id="intake-start" class="use-now" type="button"></button></div>
+      </div>
+      <p id="intake-start-error" class="tool-error" role="alert" hidden></p>
+    </section>
+    <section id="intake-interview" class="intake-columns" hidden aria-label="Patient interview">
+      <div class="tool-panel assistant-panel">
+        <p id="intake-assistant-label" class="intake-eyebrow"></p>
+        <div class="assistant-orb" aria-hidden="true"><span>✦</span></div>
+        <p id="intake-question" class="intake-question" aria-live="polite" tabindex="-1"></p>
+        <button id="intake-replay" class="tool-secondary" type="button"></button>
+        <p id="intake-chip-hint" class="intake-hint"></p>
+        <div id="intake-chips" class="answer-chips" role="group" aria-label="Suggested answers"></div>
+        <p id="intake-safety-note" class="intake-hint"></p>
+      </div>
+      <div class="tool-panel transcript-panel">
+        <p id="intake-transcript-label" class="intake-eyebrow"></p>
+        <div class="transcript-meta"><span id="intake-record-status" role="status"></span><span id="intake-language-tag"></span></div>
+        <canvas id="intake-meter" width="480" height="40" aria-hidden="true"></canvas>
+        <button id="intake-record" class="record-button" type="button"></button>
+        <form id="intake-typed">
+          <label id="intake-answer-label" class="tool-label" for="intake-answer"></label>
+          <textarea id="intake-answer" rows="6" maxlength="2000" aria-describedby="intake-confidence intake-review-hint"></textarea>
+          <p id="intake-confidence" class="intake-hint"></p>
+          <p id="intake-review-hint" class="intake-hint"></p>
+          <div class="tool-actions"><button id="intake-type" class="tool-secondary" type="button"></button><button id="intake-send" class="use-now" type="submit" disabled></button></div>
+        </form>
+        <p id="intake-answer-error" class="tool-error" role="alert" hidden></p>
+      </div>
+    </section>
+    <section id="intake-finish" class="tool-panel" hidden>
+      <p class="intake-eyebrow">DiagnoFast</p>
+      <p id="intake-finish-message" class="intake-question" aria-live="assertive"></p>
+      <a id="intake-reset" class="use-now" href="intake.html">Finish / समाप्त करें</a>
+    </section>
+    <div id="intake-help-box" class="help-box" hidden>
+      <button id="intake-help-button" class="tool-secondary" type="button">Tell reception / रिसेप्शन को बताएँ</button>
+      <p id="intake-help-status" class="intake-hint" role="status"></p>
+    </div>
+    <p class="intake-help">Need help at any time? Please tell reception. / मदद के लिए रिसेप्शन पर बताएँ।</p>
+  </main>
+  <script src="js/tools.js"></script>
+  <script src="js/intake.js"></script>
+</body>
+</html>
